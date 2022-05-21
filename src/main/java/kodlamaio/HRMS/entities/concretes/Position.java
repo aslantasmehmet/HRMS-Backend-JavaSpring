@@ -18,8 +18,9 @@ import lombok.NoArgsConstructor;
 @Table(name="positions")
 public class Position {
 	
-	@Id
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	@Column(name="id")
 	private int id;
 	
