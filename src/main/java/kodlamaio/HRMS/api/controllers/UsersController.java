@@ -13,31 +13,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.HRMS.business.abstracts.PositionService;
+import kodlamaio.HRMS.business.abstracts.UserService;
 import kodlamaio.HRMS.core.utilities.result.DataResult;
-import kodlamaio.HRMS.entities.concretes.Position;
+import kodlamaio.HRMS.entities.concretes.User;
 
 @RestController
-@RequestMapping("/api/positions")
+@RequestMapping("api/users")
 @CrossOrigin
-public class PositionsController {
-	
-	private PositionService positionService;
+public class UsersController {
+
+	private UserService userService;
 
 	@Autowired
-	public PositionsController(PositionService positionService) {
+	public UsersController(UserService userService) {
 		super();
-		this.positionService = positionService;
+		this.userService = userService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Position>> getAll(){
-		return this.positionService.getAll();
+	public DataResult<List<User>> getAll(){
+		return this.userService.getAll();
 	}
 	
 	@PostMapping("add")
-	public ResponseEntity<?> add(@Valid @RequestBody Position position) {
-		return ResponseEntity.ok(this.positionService.add(position));
+	public ResponseEntity<?> add(@Valid @RequestBody User user) {
+		return ResponseEntity.ok(this.userService.add(user));
 	}
-
+	
+	@PostMapping("delete")
+	public ResponseEntity<?> delete(@Valid @RequestBody User user) {
+		return ResponseEntity.ok(this.userService.delete(user));
+	}
 }

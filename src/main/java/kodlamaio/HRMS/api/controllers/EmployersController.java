@@ -13,31 +13,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.HRMS.business.abstracts.PositionService;
+import kodlamaio.HRMS.business.abstracts.EmployerService;
 import kodlamaio.HRMS.core.utilities.result.DataResult;
-import kodlamaio.HRMS.entities.concretes.Position;
+import kodlamaio.HRMS.entities.concretes.Employer;
 
 @RestController
-@RequestMapping("/api/positions")
+@RequestMapping("api/employers")
 @CrossOrigin
-public class PositionsController {
+public class EmployersController {
 	
-	private PositionService positionService;
+	private EmployerService employerService;
 
 	@Autowired
-	public PositionsController(PositionService positionService) {
+	public EmployersController(EmployerService employerService) {
 		super();
-		this.positionService = positionService;
+		this.employerService = employerService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Position>> getAll(){
-		return this.positionService.getAll();
+	public DataResult<List<Employer>> getAll(){
+		return this.employerService.getAll();
 	}
 	
 	@PostMapping("add")
-	public ResponseEntity<?> add(@Valid @RequestBody Position position) {
-		return ResponseEntity.ok(this.positionService.add(position));
+	public ResponseEntity<?> add(@Valid @RequestBody Employer employer) {
+		return ResponseEntity.ok(this.employerService.add(employer));
 	}
 
 }

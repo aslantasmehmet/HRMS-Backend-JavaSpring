@@ -2,8 +2,7 @@ package kodlamaio.HRMS.business.concretes;
 
 import java.util.List;
 
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.HRMS.business.abstracts.PositionService;
@@ -19,6 +18,7 @@ public class PositionManager implements PositionService{
 	
 	private PositionDao positionDao;
 
+	@Autowired
 	public PositionManager(PositionDao positionDao) {
 		super();
 		this.positionDao = positionDao;

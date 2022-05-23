@@ -22,9 +22,9 @@ public class Position {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name="id")
-	private int id;
+	public int id;
 	
 	@Column(name="position_name")
-	private String positionName;
+	public String positionName;
 
 }
