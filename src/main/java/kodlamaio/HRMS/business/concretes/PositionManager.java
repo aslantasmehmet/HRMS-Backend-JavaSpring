@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.HRMS.business.abstracts.PositionService;
+import kodlamaio.HRMS.core.utilities.business.BusinessRules;
 import kodlamaio.HRMS.core.utilities.result.DataResult;
+import kodlamaio.HRMS.core.utilities.result.ErrorResult;
 import kodlamaio.HRMS.core.utilities.result.Result;
 import kodlamaio.HRMS.core.utilities.result.SuccessDataResult;
 import kodlamaio.HRMS.core.utilities.result.SuccessResult;
@@ -31,8 +33,14 @@ public class PositionManager implements PositionService{
 
 	@Override
 	public Result add(Position position) {
+		var result = BusinessRules.run(
+					CheckIfThePositionName(position)
+					);
+		if(result != null) {
+			return result;
+		}
 		this.positionDao.save(position);
-			return new SuccessResult("Pozisyon eklendi.");
+		return new SuccessResult("Pozisyon Ekleme İşlemi Başarılı.");
 		
 	}
 
@@ -46,6 +54,13 @@ public class PositionManager implements PositionService{
 	public Result update(Position position) {
 		this.positionDao.save(position);
 		return new SuccessResult("Pozisyon Güncelleme İşlemi Başarılı.");
+	}
+	
+	private Result CheckIfThePositionName(Position position) {
+		if(positionDao.findAllByPositionName(position.getPositionName()).stream().count() !=0) {
+			return new ErrorResult("'" + position.getPositionName() + "'" + "Bu Pozisyon daha önce eklenmiştir." );
+		}
+		return new SuccessResult();
 	}
 
 }
