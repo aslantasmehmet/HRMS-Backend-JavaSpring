@@ -21,8 +21,8 @@ public class Position {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@Column(name="id")
-	public int id;
+	@Column(name="position_id")
+	public int positionId;
 	
 	@Column(name="position_name")
 	public String positionName;

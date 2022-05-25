@@ -26,8 +26,8 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	public int id;
+	@Column(name="user_id")
+	public int userId;
 	
 	@Column(name="email")
 	@Email(message="Lütfen email formatında giriniz")
