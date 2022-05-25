@@ -41,6 +41,18 @@ public class UserManager implements UserService {
 		this.userDao.delete(user);
 		return new SuccessResult("Kullancı Silindi.");
 	}
+
+	@Override
+	public DataResult<User> findByEmail(String email) {
+		return new SuccessDataResult<User>(this.userDao.findByEmail(email),
+				"Email'e göre kullanıcılar listelendi.");
+	}
+
+	@Override
+	public DataResult<User> getById(int id) {
+		return new SuccessDataResult<User>(this.userDao.getById(id),
+				"Id numarasına göre kullanıcılar listelendi.");
+	}
 	
 	
 
