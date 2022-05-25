@@ -12,5 +12,7 @@ public interface PositionService {
 	DataResult<List<Position>> getAll();
 	
 	Result add (Position position);
+	Result delete (Position posiiton);
+	Result update (Position position);
 
 }

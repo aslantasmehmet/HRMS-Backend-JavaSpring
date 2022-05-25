@@ -36,4 +36,16 @@ public class PositionManager implements PositionService{
 		
 	}
 
+	@Override
+	public Result delete(Position posiiton) {
+		this.positionDao.delete(posiiton);
+		return new SuccessResult("Pozisyon Silme İşlemi Başarılı.");
+	}
+
+	@Override
+	public Result update(Position position) {
+		this.positionDao.save(position);
+		return new SuccessResult("Pozisyon Güncelleme İşlemi Başarılı.");
+	}
+
 }
