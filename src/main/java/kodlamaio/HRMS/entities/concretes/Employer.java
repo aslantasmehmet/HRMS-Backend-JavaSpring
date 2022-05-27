@@ -24,22 +24,22 @@ public class Employer extends User{
 	@Column(name="company_name")
 	@NotNull
 	@NotBlank
-	public String companyName;
+	private String companyName;
 	
 	@Column(name="company_web_site")
 	@NotNull
 	@NotBlank
-	public String companyWebSite;
+	private String companyWebSite;
 	
 	@Column(name="phone_number")
 	@NotNull
 	@NotBlank
-	public String phoneNumber;
+	private String phoneNumber;
 	
 	@Column(name="tax_number")
 	@NotNull
 	@NotBlank
-	public String taxNumber;
+	private String taxNumber;
 	
 	@Column(name="creation_date")
 	private LocalDate creationDate;

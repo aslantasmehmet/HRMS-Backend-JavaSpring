@@ -35,6 +35,11 @@ public class EmployersController {
 		return this.employerService.getAll();
 	}
 	
+	@GetMapping("/getbyuserid")
+	public DataResult<Employer> getByUserId(int userId){
+		return this.employerService.getByUserId(userId);
+	}
+	
 	@PostMapping("add")
 	public ResponseEntity<?> add(@Valid @RequestBody Employer employer) {
 		return ResponseEntity.ok(this.employerService.add(employer));

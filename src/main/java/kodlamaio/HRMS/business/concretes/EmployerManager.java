@@ -29,11 +29,31 @@ public class EmployerManager implements EmployerService{
 		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(),
 				"Tüm İşverenler Listelendi.");
 	}
+	
+	@Override
+	public DataResult<Employer> getByUserId(int userId) {
+		return new SuccessDataResult<Employer>(this.employerDao.getByUserId(userId),
+				"Id Numara Sırasına Göre İşverenler Listelendi.");
+	}
 
 	@Override
 	public Result add(Employer employer) {
 		this.employerDao.save(employer);
 		return new SuccessResult("Yeni İşveren Kaydedildi.");
+	}
+
+	
+
+	@Override
+	public Result delete(Employer employer) {
+		this.employerDao.delete(employer);
+		return new SuccessResult("İşveren Silme İşlemi Başarılı.");
+	}
+
+	@Override
+	public Result update(Employer employer) {
+		this.employerDao.save(employer);
+		return new SuccessResult("İşveren kullanıcı bilgileri güncellendi.");
 	}
 
 }
