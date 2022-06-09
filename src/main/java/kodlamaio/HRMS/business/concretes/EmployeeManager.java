@@ -14,7 +14,6 @@ import kodlamaio.HRMS.core.utilities.result.ErrorResult;
 import kodlamaio.HRMS.core.utilities.result.Result;
 import kodlamaio.HRMS.core.utilities.result.SuccessDataResult;
 import kodlamaio.HRMS.core.utilities.result.SuccessResult;
-import kodlamaio.HRMS.dataAccess.abstracts.EmailVerificationDao;
 import kodlamaio.HRMS.dataAccess.abstracts.EmployeeDao;
 import kodlamaio.HRMS.entities.concretes.Employee;
 
@@ -22,12 +21,12 @@ import kodlamaio.HRMS.entities.concretes.Employee;
 public class EmployeeManager implements EmployeeService {
 	
 	private EmployeeDao employeeDao;
-	private EmailVerificationDao emailVerificationDao;
+	
 
-	public EmployeeManager(EmployeeDao employeeDao,EmailVerificationDao emailVerificationDao) {
+	public EmployeeManager(EmployeeDao employeeDao) {
 		super();
 		this.employeeDao = employeeDao;
-		this.emailVerificationDao = emailVerificationDao;
+		
 	}
 
 	@Override
