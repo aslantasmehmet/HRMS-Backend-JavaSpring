@@ -36,7 +36,7 @@ public class User {
 	public String email;
 	
 	@Column(name="password")
-	@NotBlank
+	@NotBlank 
 	@NotNull
 	public String password;
 	

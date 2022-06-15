@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -62,22 +64,26 @@ public class JobAdvert {
 	@NotNull
 	public int positionId;
 	
-	@Column(name="city_id")
-	@NotNull
-	public int cityId;
-	
+
 	@Column(name="user_id")
 	@NotNull
 	public int userId;
 	
-	@Column(name="place_type_id")
-	@NotNull
-	public int placeTypeId;
+	//@Column(name="place_type_id")
+	//@NotNull
+	//public int placeTypeId;
 	
-	@Column(name="time_type_id")
-	@NotNull
-	public int timeTypeId;
+	//@Column(name="time_type_id")
+	//@NotNull
+	//public int timeTypeId;
 	
+	//@Column(name="city_id")
+	//@NotNull
+	//public int cityId;
+	
+	@ManyToOne()
+	@JoinColumn(name = "position_id", insertable = false, updatable = false)
+	private Position position;
 	
 
 }

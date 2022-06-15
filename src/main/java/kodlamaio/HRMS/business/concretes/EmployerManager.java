@@ -1,5 +1,6 @@
 package kodlamaio.HRMS.business.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,7 +8,9 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kodlamaio.HRMS.business.abstracts.EmailVerificationService;
 import kodlamaio.HRMS.business.abstracts.EmployerService;
+import kodlamaio.HRMS.business.abstracts.UserService;
 import kodlamaio.HRMS.core.utilities.business.BusinessRules;
 import kodlamaio.HRMS.core.utilities.business.validation.TaxNumverValidation.TaxNumberValidation;
 import kodlamaio.HRMS.core.utilities.result.DataResult;
@@ -16,17 +19,27 @@ import kodlamaio.HRMS.core.utilities.result.Result;
 import kodlamaio.HRMS.core.utilities.result.SuccessDataResult;
 import kodlamaio.HRMS.core.utilities.result.SuccessResult;
 import kodlamaio.HRMS.dataAccess.abstracts.EmployerDao;
+import kodlamaio.HRMS.entities.concretes.EmailVerification;
 import kodlamaio.HRMS.entities.concretes.Employer;
+import kodlamaio.HRMS.entities.concretes.User;
 
 @Service
 public class EmployerManager implements EmployerService{
 	
 	private EmployerDao employerDao;
+	private UserService userService;
+	private  EmailVerificationService emailVerificationService; 
 
 	@Autowired
-	public EmployerManager(EmployerDao employerDao) {
+	public EmployerManager(
+			EmployerDao employerDao,
+			UserService userService,
+			EmailVerificationService emailVerificationService
+			) {
 		super();
 		this.employerDao = employerDao;
+		this.emailVerificationService = emailVerificationService;
+		this.userService = userService;
 	}
 
 	@Override
@@ -53,8 +66,13 @@ public class EmployerManager implements EmployerService{
 		if(result !=null) {
 			return result;
 			}
+		User savedUser = this.userService.add(employer);
+		this.emailVerificationService.generateCode(new EmailVerification(),savedUser.getUserId());
+		LocalDate now = LocalDate.now();
+		employer.setCreationDate(now);
 		this.employerDao.save(employer);
-		return new SuccessResult("Kayıt Olma İşlemi Başarılı");
+		return new SuccessResult("İş veren olarak kayıt olundu ,lütfen hesabınızı email adresinize"
+				+ " gönderdiğimiz kod ile doğrulayınız ID numaranız:"+employer.getUserId());
 	}
 
 	private Result CheckIfTheEmailIsRegistered(Employer employer) {

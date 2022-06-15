@@ -24,7 +24,7 @@ public class EmailVerification {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="code")
+	@Column(name="code_")
 	private String code;
 	
 	@Column(name="is_verified")

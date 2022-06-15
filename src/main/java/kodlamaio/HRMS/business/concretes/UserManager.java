@@ -30,11 +30,6 @@ public class UserManager implements UserService {
 				"Tüm Kullanıcılar Listelendi.");
 	}
 
-	@Override
-	public Result add(User user) {
-		this.userDao.save(user);
-		return new SuccessResult("Yeni Kullanıcı Eklendi.");
-	}
 
 	@Override
 	public Result delete(User user) {
@@ -53,6 +48,12 @@ public class UserManager implements UserService {
 		return new SuccessDataResult<User>(this.userDao.getById(id),
 				"Id numarasına göre kullanıcılar listelendi.");
 	}
+
+	@Override
+	public User add(User user) {
+		return this.userDao.save(user) ;
+	}
+	
 	
 	
 
