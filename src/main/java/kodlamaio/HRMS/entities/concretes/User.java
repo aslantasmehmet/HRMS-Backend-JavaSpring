@@ -29,20 +29,16 @@ public class User {
 	@Column(name="user_id")
 	public int userId;
 	
-	@Column(name="email")
+	@Column(name="email", unique = true)
 	@Email(message="Lütfen email formatında giriniz")
-	@NotBlank
-	@NotNull
+	@NotBlank(message = "E-posta alanı boş geçilemez.")
+	@NotNull(message = "E-posta alanı boş geçilemez.")
 	public String email;
 	
 	@Column(name="password")
-	@NotBlank 
-	@NotNull
+	@NotBlank(message = "Parola alanı boş geçilemez.")
+	@NotNull(message = "Parola alanı boş geçilemez.")
 	public String password;
 	
-	@Column(name="imageUrl")
-	private String imageUrl;
-	
-
 
 }
