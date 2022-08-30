@@ -21,10 +21,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @EqualsAndHashCode(callSuper = true)
-@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id")
+@PrimaryKeyJoinColumn(name = "user_id",referencedColumnName = "user_id")
 @Table(name="employees")
 
-public class Employee extends User {
+public class Candidate extends User {
 	
 	@Column(name="first_name")
 	@NotNull
@@ -41,6 +41,5 @@ public class Employee extends User {
 	@Column(name="date_of_birth")
 	@NotNull
 	private LocalDate dateOfBirth;
-	
 
 }
