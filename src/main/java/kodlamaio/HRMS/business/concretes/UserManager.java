@@ -32,7 +32,7 @@ public class UserManager implements UserService{
 
 	@Override
 	public DataResult<User> getByEmail(String email) {
-		return new SuccessDataResult<>(this.userDao.getByEmail(email));
+		return new SuccessDataResult<>(this.userDao.getByEmail(email),"Email'göre kişi getirilmiştir.");
 	}
 
 }

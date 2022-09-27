@@ -40,4 +40,17 @@ public class CandidateManager implements CandidateService{
 				,"Kimlik Numarasına Göre  Adaylar Listelendi.");
 	}
 
+
+
+	@Override
+	public Result add(Candidate candidate) {
+		this.candidateDao.save(candidate);		
+		return new SuccessResult("Kayıt Olma İşlemi Başarılı");
+	}
+	
+	public Result delete(Candidate candidate) {
+		this.candidateDao.delete(candidate);
+		return new SuccessResult("Silme İşlemi Başarılı");
+	}
+
 }

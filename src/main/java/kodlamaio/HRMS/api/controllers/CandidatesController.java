@@ -41,16 +41,16 @@ public class CandidatesController {
 		return this.candidateService.getByIdentityNumber(identityNumber);
 	}
 	
-//	@PostMapping("/add")
-//	public ResponseEntity<?> add(@Valid @RequestBody Candidate candidate){
-//		return ResponseEntity.ok(this.candidateService.add(candidate));
-//	}
-//	
-//	@PostMapping("/delete")
-//	public ResponseEntity<?> delete(@Valid @RequestBody  Candidate candidate){
-//		return ResponseEntity.ok(this.candidateService.delete(candidate));
-//	}
-//	
+	@PostMapping("/add")
+	public ResponseEntity<?> add(@Valid @RequestBody Candidate candidate){
+		return ResponseEntity.ok(this.candidateService.add(candidate));
+	}
+	
+	@PostMapping("/delete")
+	public ResponseEntity<?> delete(@Valid @RequestBody  Candidate candidate){
+		return ResponseEntity.ok(this.candidateService.delete(candidate));
+	}
+	
 	
 
 }

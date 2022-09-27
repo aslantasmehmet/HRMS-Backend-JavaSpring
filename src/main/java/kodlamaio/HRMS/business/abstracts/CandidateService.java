@@ -12,5 +12,11 @@ public interface CandidateService {
 	
 	DataResult<Candidate> getByIdentityNumber(String identityNumber);
 	
+	Result add (Candidate candidate);
+	
+	Result delete (Candidate candidate);
+	
+
+	
 
 }
