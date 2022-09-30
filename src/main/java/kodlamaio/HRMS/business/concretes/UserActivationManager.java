@@ -76,17 +76,17 @@ public class UserActivationManager implements UserActivationService{
 	public DataResult<UserActivation> getById(int id) {
 		return new SuccessDataResult<>(this.userActivationDao.getById(id));
 	}
-
+	
+	
+	private String generateCode() {
+		UUID code = UUID.randomUUID();
+		return code.toString();
+	}
 
 
 	@Override
 	public DataResult<UserActivation> getAllByUserId(int userId) {
 		return new SuccessDataResult<>(this.userActivationDao.getByUser_Id(userId));
-	}	
-	
-	private String generateCode() {
-		UUID code = UUID.randomUUID();
-		return code.toString();
 	}
 
 }

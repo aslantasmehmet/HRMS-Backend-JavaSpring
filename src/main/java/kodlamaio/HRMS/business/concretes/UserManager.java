@@ -19,12 +19,13 @@ public class UserManager implements UserService{
 		super();
 		this.userDao = userDao;
 	}
+	
 
 	@Override
 	public DataResult<List<User>> getAll() {
 		return new SuccessDataResult<>(this.userDao.findAll());
 	}
-
+	
 	@Override
 	public DataResult<User> getById(int userId) {
 		return new SuccessDataResult<>(this.userDao.getById(userId));

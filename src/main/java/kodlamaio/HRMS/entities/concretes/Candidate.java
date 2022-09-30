@@ -4,10 +4,12 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
 @EqualsAndHashCode(callSuper = true)
 @Table(name="candidates")
 
@@ -33,6 +36,10 @@ public class Candidate extends User {
 	@NotNull
 	private String lastName;
 	
+	@Column(name="title")
+	@NotNull
+	private String title;
+	
 	@Column(name="identity_number")
 	@NotNull
 	private String identityNumber;
@@ -44,5 +51,11 @@ public class Candidate extends User {
 	@Column(name="date_of_birth")
 	@NotNull
 	private LocalDate dateOfBirth;
+
+	
+	
+	@JsonIgnore
+	@OneToOne
+	private UserActivation userActivation;
 
 }

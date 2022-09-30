@@ -6,15 +6,15 @@ import kodlamaio.HRMS.core.utilities.result.DataResult;
 import kodlamaio.HRMS.core.utilities.result.Result;
 import kodlamaio.HRMS.entities.concretes.Candidate;
 
-public interface CandidateService {
+public interface CandidateService extends EntitiyService<Candidate> {
+	
+	Result activate (String code);
 	
 	DataResult<List<Candidate>> getAll();
 	
 	DataResult<Candidate> getByIdentityNumber(String identityNumber);
 	
-	Result add (Candidate candidate);
-	
-	Result delete (Candidate candidate);
+
 	
 
 	

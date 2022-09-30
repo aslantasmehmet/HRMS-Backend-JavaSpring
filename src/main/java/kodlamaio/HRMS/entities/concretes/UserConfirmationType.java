@@ -23,8 +23,8 @@ public class UserConfirmationType {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="user_confirmation_type_id")
-	private int userConfirmationTypeId;
+	@Column(name="id")
+	private int id;
 	
 	@Column(name="type")
 	private String type;

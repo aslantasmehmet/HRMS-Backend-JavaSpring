@@ -1,6 +1,6 @@
 package kodlamaio.HRMS.entities.concretes;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,34 +22,45 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-@Table(name="user_confirmations")
-public class UserConfirmation {
+@Table(name="educations")
+public class Education {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="is_confirmed")
-	private boolean isConfirmed;
+	@Column(name="degree")
+	private String degree;
 	
-	@Column(name="is_confirmed_date")
-	private LocalDateTime isConfirmedDate;
+	@Column(name="university_name")
+	private String universityName;
 	
-	@ManyToOne()
-	@JoinColumn(name="user_id")
-	private User user;
+	@Column(name="department")
+	private String department;
 	
-	@ManyToOne()
-	@JoinColumn(name="user_confirmation_type_id")
-	private UserConfirmationType userConfirmationType;
+	@Column(name="starting_date")
+	private LocalDate startingDate;
+	
+	@Column(name="graduation_date")
+	private LocalDate graduationDate;
 	
 	
-	public UserConfirmation(User user,UserConfirmationType userConfirmationType, boolean isConfirmed) {
-		this.setUser(user);
-		this.setUserConfirmationType(userConfirmationType);
-		this.setConfirmed(isConfirmed);
+
+	
+	
+	@ManyToOne
+	@JoinColumn(name="resume_id")
+	private Resume resume;
+	
+	
+	
+	public String getGraduationDate() {
+		if(graduationDate == null) {
+			return "Devam Ediyor.";
+		}
+		return graduationDate.toString();
 	}
+	
+
 }
-
-

@@ -46,10 +46,6 @@ public class CandidatesController {
 		return ResponseEntity.ok(this.candidateService.add(candidate));
 	}
 	
-	@PostMapping("/delete")
-	public ResponseEntity<?> delete(@Valid @RequestBody  Candidate candidate){
-		return ResponseEntity.ok(this.candidateService.delete(candidate));
-	}
 	
 	
 

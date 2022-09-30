@@ -27,8 +27,8 @@ public class UserActivation {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="user_activation_id")
-	private int userActivationId;
+	@Column(name="id")
+	private int id;
 	
 	@Column(name = "code")
 	private String code;

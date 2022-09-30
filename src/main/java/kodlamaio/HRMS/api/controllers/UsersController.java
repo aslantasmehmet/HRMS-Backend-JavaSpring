@@ -35,8 +35,8 @@ public class UsersController {
 		return this.userService.getByEmail(email);
 	}
 	
-	public DataResult<User> getById (int userId){
-		return this.userService.getById(userId);
+	public DataResult<User> getById (int id){
+		return this.userService.getById(id);
 	}
 
 }

@@ -1,5 +1,7 @@
 package kodlamaio.HRMS.entities.concretes;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -21,25 +22,55 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="cover_letters")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-public class CoverLetter {
+@Table(name="work_experiences")
+public class WorkExperience {
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="content")
-	private String content;
+	@Column(name="company_name")
+	@NotNull
+	private String companyName;
+	
+	@Column(name="company_sector")
+	@NotNull
+	private String companySector;
+	
+	@Column(name="position")
+	@NotNull
+	private String position;
+	
+	@Column(name="starting_date")
+	@NotNull
+	private LocalDate startingDate;
+	
+	@Column(name="end_date")
+	@NotNull
+	private LocalDate endDate;
+	
+	@Column(name="working_type")
+	@NotNull
+	private String workingType;
+
 	
 	@ManyToOne
-	@JoinColumn(name="candidate_id")
-	private Candidate candidate;
-	
-	@OneToOne(mappedBy = "coverLetter")
+	@JoinColumn(name="resume_id")
 	private Resume resume;
 	
+	public String getEndDate(){
+		if(endDate == null) {
+			return "Devam Ediyor";
+		}
+		return endDate.toString();
+	}
+	
+	
+	
 
+	
 
 }

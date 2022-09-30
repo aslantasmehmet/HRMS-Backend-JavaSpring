@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,15 +19,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="personal_informations")
-public class Personalİnformation {
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@Table(name="skills")
+
+
+public class Skill {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="personal_information_id")
-	private int personalIınformationId;
+	@Column(name="id")
+	private int id;
 	
-	@Column(name="position")
-	private String position; 
+	@Column(name="skill")
+	private String skill;
+	
+	@ManyToOne
+	@JoinColumn(name="resume_id")
+	private Resume resume;
 
 }

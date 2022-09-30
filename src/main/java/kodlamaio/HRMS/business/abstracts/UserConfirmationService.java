@@ -10,7 +10,5 @@ public interface UserConfirmationService extends EntitiyService<UserConfirmation
 	
 	DataResult<List<UserConfirmation>> getByIsConfirmedAndUserConfirmationType_Id(boolean isConfirmed, int userConfirmationTypeId);
 	
-	
-	DataResult<List<UserConfirmation> > getAllByUserId(int userId);
-
+	DataResult<List<UserConfirmation>> getAllByUserId (int id);
 }

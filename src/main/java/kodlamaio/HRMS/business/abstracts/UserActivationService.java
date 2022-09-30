@@ -12,6 +12,7 @@ public interface UserActivationService extends EntitiyService<UserActivation> {
 	 DataResult<UserActivation>   getByCode (String code);
 	 
 	 DataResult<UserActivation> getAllByUserId(int userId);
+	 
 	
 
 
