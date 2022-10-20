@@ -32,15 +32,16 @@ public class User {
 	private int id;
 	
 	@Column(name="email", unique = true)
-	@Email(message="Lütfen email formatında giriniz")
-	@NotBlank(message = "E-posta alanı boş geçilemez.")
-	@NotNull(message = "E-posta alanı boş geçilemez.")
+	@Email
+	@NotBlank
+	@NotNull
 	private String email;
 	
 	@Column(name="password")
-	@NotBlank(message = "Parola alanı boş geçilemez.")
-	@NotNull(message = "Parola alanı boş geçilemez.")
+	@NotBlank
+	@NotNull
 	private String password;
+	
 	
 
 }

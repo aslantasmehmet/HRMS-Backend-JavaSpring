@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.HRMS.business.abstracts.CandidateService;
 import kodlamaio.HRMS.core.utilities.result.DataResult;
 import kodlamaio.HRMS.entities.concretes.Candidate;
-import kodlamaio.HRMS.entities.concretes.User;
 
 @RestController
 @RequestMapping("/api/candidates")

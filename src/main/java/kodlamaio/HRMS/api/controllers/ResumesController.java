@@ -3,8 +3,8 @@ package kodlamaio.HRMS.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -43,9 +43,9 @@ public class ResumesController {
 		return this.resumeService.update(resume);
 	}
 	
-	@DeleteMapping("/delete")
-	public Result delete(@RequestParam int id) {
-		return this.resumeService.delete(id);
+	@PostMapping("/delete")
+	public ResponseEntity<?> deleteById(int id){
+		return ResponseEntity.ok(this.resumeService.delete(id));
 	}
 	
 	@GetMapping("/getbyid")
