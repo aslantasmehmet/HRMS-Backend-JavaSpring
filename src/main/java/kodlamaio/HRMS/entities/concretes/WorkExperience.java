@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Table(name="work_experiences")
+
 public class WorkExperience {
 	
 	
