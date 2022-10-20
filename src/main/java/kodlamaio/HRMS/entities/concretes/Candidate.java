@@ -21,10 +21,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @EqualsAndHashCode(callSuper = true)
 @Table(name="candidates")
 
