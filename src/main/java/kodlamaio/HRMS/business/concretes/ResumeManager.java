@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import kodlamaio.HRMS.business.abstracts.CoverLetterService;
 import kodlamaio.HRMS.business.abstracts.EducationService;
 import kodlamaio.HRMS.business.abstracts.ImageService;
-import kodlamaio.HRMS.business.abstracts.LanguageService;
 import kodlamaio.HRMS.business.abstracts.ResumeService;
 import kodlamaio.HRMS.business.abstracts.WorkExperienceService;
 import kodlamaio.HRMS.core.utilities.result.DataResult;
@@ -28,7 +27,6 @@ public class ResumeManager implements ResumeService {
 	
 	
 	private ResumeDao resumeDao;
-	private CoverLetterService coverLetterService;
 	private EducationService educationService;
 	private WorkExperienceService workExperienceService;
 	private ImageService imageService;
@@ -36,7 +34,6 @@ public class ResumeManager implements ResumeService {
 	@Autowired
 	public ResumeManager(
 			ResumeDao resumeDao,
-			CoverLetterService coverLetterService,
 			EducationService educationService,
 			WorkExperienceService workExperienceService,
 			ImageService imageService
@@ -44,7 +41,6 @@ public class ResumeManager implements ResumeService {
 			) {
 		super();
 		this.resumeDao = resumeDao;
-		this.coverLetterService = coverLetterService;
 		this.educationService = educationService;
 		this.workExperienceService = workExperienceService;
 		this.imageService = imageService;
@@ -112,10 +108,12 @@ public class ResumeManager implements ResumeService {
 				resume.getCreationDate(),
 				resume.getCandidate(),
 				resume.getCoverLetter(),
+				imageService.getByUserId(candidateId).getData(),
 				educationService.getAllByResumeIdSortedByGraduationDate(resume.getId()).getData(),
 				workExperienceService.getAllByResumeIdSortedByTerminationDate(resume.getId()).getData(),
 				resume.getLanguages(),
 				resume.getSkills()
+				
 			
 			
 				
