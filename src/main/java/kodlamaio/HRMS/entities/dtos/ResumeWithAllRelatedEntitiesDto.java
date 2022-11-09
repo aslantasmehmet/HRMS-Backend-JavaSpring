@@ -6,6 +6,7 @@ import java.util.List;
 import kodlamaio.HRMS.entities.concretes.Candidate;
 import kodlamaio.HRMS.entities.concretes.CoverLetter;
 import kodlamaio.HRMS.entities.concretes.Education;
+import kodlamaio.HRMS.entities.concretes.Image;
 import kodlamaio.HRMS.entities.concretes.Language;
 import kodlamaio.HRMS.entities.concretes.Skill;
 import kodlamaio.HRMS.entities.concretes.WorkExperience;
@@ -27,7 +28,7 @@ public class ResumeWithAllRelatedEntitiesDto {
 
 	private CoverLetter coverLetter;
 
-
+	private Image  image;
 
 	private List<Education> educations;
 
