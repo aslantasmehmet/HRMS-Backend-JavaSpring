@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 public interface EducationDao extends JpaRepository<Education, Integer> {
 	
 	
+	
 	List<Education> getByResume_Id(int resumeId);
 	
 	List<Education> getByResume_Id(int resumeId, Sort sort);

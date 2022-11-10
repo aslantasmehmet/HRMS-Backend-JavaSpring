@@ -7,6 +7,8 @@ import kodlamaio.HRMS.entities.concretes.Education;
 
 public interface EducationService extends EntitiyService<Education> {
 	
+	
+	
 	DataResult<List<Education>> getAllByResumeId (int resumeId);
 	
 	DataResult<List<Education>> getAllByResumeIdSortedByGraduationDate (int resumeId);
