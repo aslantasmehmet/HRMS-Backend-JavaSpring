@@ -45,14 +45,9 @@ public class Education {
 	@Column(name="graduation_date")
 	private LocalDate graduationDate;
 	
-	
-
-	
-	
 	@ManyToOne
 	@JoinColumn(name="resume_id")
 	private Resume resume;
-	
 	
 	
 	public String getGraduationDate() {
