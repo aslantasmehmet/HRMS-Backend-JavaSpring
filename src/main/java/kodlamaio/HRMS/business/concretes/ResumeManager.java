@@ -30,13 +30,15 @@ public class ResumeManager implements ResumeService {
 	private EducationService educationService;
 	private WorkExperienceService workExperienceService;
 	private ImageService imageService;
+	private CoverLetterService coverLetterService;
 
 	@Autowired
 	public ResumeManager(
 			ResumeDao resumeDao,
 			EducationService educationService,
 			WorkExperienceService workExperienceService,
-			ImageService imageService
+			ImageService imageService,
+			CoverLetterService coverLetterService
 			
 			) {
 		super();
@@ -44,6 +46,7 @@ public class ResumeManager implements ResumeService {
 		this.educationService = educationService;
 		this.workExperienceService = workExperienceService;
 		this.imageService = imageService;
+		this.coverLetterService=coverLetterService;
 	}
 
 	@Override
@@ -74,18 +77,29 @@ public class ResumeManager implements ResumeService {
 	@Override
 	public DataResult<List<Resume>> getAll() {
 		Sort sort  = Sort.by(Sort.Direction.DESC,"creationDate");
-		 return new SuccessDataResult<>(this.resumeDao.findAll(sort));
+		 return new SuccessDataResult<List<Resume>>(this.resumeDao.findAll(sort));
 	}
 
 	@Override
 	public DataResult<Resume> getById(int id) {
-		return new SuccessDataResult<>(this.resumeDao.getById(id));
+		return new SuccessDataResult<Resume>(resumeDao.getById(id));
 	}
 
 	@Override
 	public DataResult<Resume> getByCandidateId(int candidateId) {
-		return new SuccessDataResult<>(this.resumeDao.getByCandidate_Id(candidateId));
+		return new SuccessDataResult<Resume>(resumeDao.getByCandidate_Id(candidateId));
 	}
+	
+	@Override
+	public Result addCoverLetterToResume(int resumeId, int coverLetterId) {
+		Resume resume =getById(resumeId).getData();
+		resume.setCoverLetter(coverLetterService.getById(coverLetterId).getData());
+		
+		update(resume);
+		return new SuccessResult("Ön Yazı Özgeçmişe Eklendi.");
+		
+	}
+
 
 	@Override
 	public Result deleteCoverLetterFromResume(int resumeId) {
@@ -124,7 +138,7 @@ public class ResumeManager implements ResumeService {
 	}
 
 	@Override
-	public DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumeDetailsByCandidate() {
+	public DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumesDetailsByActivatedCandidate() {
 		List<ResumeWithAllRelatedEntitiesDto> resumes = new ArrayList<ResumeWithAllRelatedEntitiesDto>();
 		
 		for (Resume resume : getAll().getData()){
@@ -134,5 +148,7 @@ public class ResumeManager implements ResumeService {
 		};
 		return new SuccessDataResult<List<ResumeWithAllRelatedEntitiesDto>>(resumes);
 	}
+
+	
 
 }

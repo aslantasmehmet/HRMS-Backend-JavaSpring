@@ -11,12 +11,14 @@ public interface ResumeService extends EntitiyService<Resume> {
 	
 	DataResult<Resume> getByCandidateId(int candidateId);
 	
+	Result addCoverLetterToResume(int resumeId, int coverLetterId);
+	
 	Result deleteCoverLetterFromResume (int resumeId);
 	
 	DataResult<ResumeWithAllRelatedEntitiesDto> getResumeDetailsByCandidateId(int candidateId);
 	
 
-	DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumeDetailsByCandidate();
+	DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumesDetailsByActivatedCandidate();
 	
 
 
