@@ -46,6 +46,7 @@ public class UserActivation {
 	
 	public UserActivation(User user) {
 		this.setUser(user);	
-		}
+		
+	}
 
 }

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.HRMS.business.abstracts.EmailService;
@@ -22,6 +23,7 @@ public class UserActivationManager implements UserActivationService{
 	private UserActivationDao userActivationDao;
 	private EmailService emailService;
 
+	@Autowired
 	public UserActivationManager(
 			UserActivationDao userActivationDao,
 			EmailService emailService) {
@@ -53,28 +55,28 @@ public class UserActivationManager implements UserActivationService{
 		userActivationDao.deleteById(id);
 		return new SuccessResult("Id Numarasına göre Kullanıcı Silindi.");
 	}
-
+	
+	@Override
+	public DataResult<List<UserActivation>> getAll() {
+		return new SuccessDataResult<List<UserActivation>>(userActivationDao.findAll());
+	
+	}
 
 	@Override
-	public DataResult<List<UserActivation>> getByIsActivated(boolean isActivated) {
-		return new SuccessDataResult<>(this.userActivationDao.getByIsActivated(isActivated));
+	public DataResult<List<UserActivation>> getAllByIsActivated(boolean isActivated) {
+		return new SuccessDataResult<List<UserActivation>>(userActivationDao.getByIsActivated(isActivated));
 	}
 
 	@Override
 	public DataResult<UserActivation> getByCode(String code) {
-		return new SuccessDataResult<>(this.userActivationDao.getByCode(code));
+		return new SuccessDataResult<UserActivation>(userActivationDao.getByCode(code));
 	}
 
-
-	@Override
-	public DataResult<List<UserActivation>> getAll() {
-		return new SuccessDataResult<>(this.userActivationDao.findAll());
 
 	
-	}
 	@Override
 	public DataResult<UserActivation> getById(int id) {
-		return new SuccessDataResult<>(this.userActivationDao.getById(id));
+		return new SuccessDataResult<UserActivation>(userActivationDao.getById(id));
 	}
 	
 	
@@ -85,9 +87,12 @@ public class UserActivationManager implements UserActivationService{
 
 
 	@Override
-	public DataResult<UserActivation> getAllByUserId(int userId) {
-		return new SuccessDataResult<>(this.userActivationDao.getByUser_Id(userId));
+	public DataResult<UserActivation> getByUserId(int userId) {
+		return new SuccessDataResult<UserActivation>(userActivationDao.getByUser_Id(userId));
 	}
+
+
+	
 
 }
 	

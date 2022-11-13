@@ -46,7 +46,7 @@ public class UserConfirmation {
 	private UserConfirmationType userConfirmationType;
 	
 	
-	public UserConfirmation(User user,UserConfirmationType userConfirmationType, boolean isConfirmed) {
+	public UserConfirmation( User user,UserConfirmationType userConfirmationType, boolean isConfirmed) {
 		this.setUser(user);
 		this.setUserConfirmationType(userConfirmationType);
 		this.setConfirmed(isConfirmed);

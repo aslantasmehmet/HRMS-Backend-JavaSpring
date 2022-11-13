@@ -13,7 +13,7 @@ public interface UserActivationDao extends JpaRepository<UserActivation, Integer
 	
 	UserActivation getByCode (String code);
 	
-	UserActivation getByUser_Id(int userId);
+	UserActivation getByUser_Id (int userId);
 	
 	
 	

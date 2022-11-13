@@ -2,6 +2,7 @@ package kodlamaio.HRMS.business.concretes;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.HRMS.business.abstracts.UserConfirmationTypeService;
@@ -16,9 +17,9 @@ import kodlamaio.HRMS.entities.concretes.UserConfirmationType;
 public class UserConfirmationTypeManager implements UserConfirmationTypeService{
 	
 	private UserConfirmationTypeDao userConfirmationTypeDao;
-
+	
+	@Autowired
 	public UserConfirmationTypeManager(UserConfirmationTypeDao userConfirmationTypeDao) {
-		super();
 		this.userConfirmationTypeDao = userConfirmationTypeDao;
 	}
 
@@ -46,12 +47,12 @@ public class UserConfirmationTypeManager implements UserConfirmationTypeService{
 
 	@Override
 	public DataResult<List<UserConfirmationType>> getAll() {
-		return new SuccessDataResult<>(this.userConfirmationTypeDao.findAll());
+		return new SuccessDataResult<List<UserConfirmationType>>(userConfirmationTypeDao.findAll());
 	}
 
 	@Override
 	public DataResult<UserConfirmationType> getById(int id) {
-		return new SuccessDataResult<>(this.userConfirmationTypeDao.getById(id));
+		return new SuccessDataResult<UserConfirmationType>(userConfirmationTypeDao.getById(id));
 	}
 
 }

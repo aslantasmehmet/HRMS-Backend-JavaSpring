@@ -7,11 +7,11 @@ import kodlamaio.HRMS.entities.concretes.UserActivation;
 
 public interface UserActivationService extends EntitiyService<UserActivation> {
 	
-	 DataResult<List<UserActivation>> getByIsActivated(boolean isActivated);
+	 DataResult<List<UserActivation>> getAllByIsActivated(boolean isActivated);
 	
 	 DataResult<UserActivation>   getByCode (String code);
 	 
-	 DataResult<UserActivation> getAllByUserId(int userId);
+	 DataResult<UserActivation> getByUserId(int userId);
 	 
 	
 

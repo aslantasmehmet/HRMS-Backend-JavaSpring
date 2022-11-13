@@ -3,6 +3,7 @@ package kodlamaio.HRMS.business.concretes;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.HRMS.business.abstracts.EmailService;
@@ -20,6 +21,7 @@ public class UserConfirmationManager implements UserConfirmationService {
 	private UserConfirmationDao userConfirmationDao;
 	private EmailService emailService;
 
+	@Autowired
 	public UserConfirmationManager(
 			UserConfirmationDao userConfirmationDao,
 			EmailService emailService
@@ -56,23 +58,22 @@ public class UserConfirmationManager implements UserConfirmationService {
 
 	@Override
 	public DataResult<List<UserConfirmation>> getAll() {
-		return new SuccessDataResult<>(this.userConfirmationDao.findAll());
+		return new SuccessDataResult<List<UserConfirmation>>(userConfirmationDao.findAll());
 	}
 
 	@Override
 	public DataResult<UserConfirmation> getById(int id) {
-		return new SuccessDataResult<>(this.userConfirmationDao.getById(id));
+		return new SuccessDataResult<UserConfirmation>(userConfirmationDao.getById(id));
 	}
 
 	@Override
-	public DataResult<List<UserConfirmation>> getByIsConfirmedAndUserConfirmationType_Id(boolean isConfirmed,
-			int userConfirmationTypeId) {
-		return new SuccessDataResult<>(this.userConfirmationDao.getByIsConfirmedAndUserConfirmationType_Id(isConfirmed, userConfirmationTypeId));
+	public DataResult<List<UserConfirmation>> getAllByIsConfirmedAndUserConfirmationTypeId(boolean isConfirmed,int userConfirmationTypeId) {
+		return new SuccessDataResult<List<UserConfirmation>>(userConfirmationDao.getByIsConfirmedAndUserConfirmationType_Id(isConfirmed, userConfirmationTypeId));
 	}
 
 	@Override
-	public DataResult<List<UserConfirmation>> getAllByUserId(int id) {
-		return new SuccessDataResult<>(this.userConfirmationDao.getByUser_Id(id));
+	public DataResult<List<UserConfirmation>> getAllByUserId(int userId) {
+		return new SuccessDataResult<List<UserConfirmation>>(userConfirmationDao.getByUser_Id(userId));
 	}
 
 	

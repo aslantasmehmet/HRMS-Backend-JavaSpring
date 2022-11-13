@@ -1,5 +1,7 @@
 package kodlamaio.HRMS.entities.concretes;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,6 +32,8 @@ public class Language {
 	
 	@Column(name="language")
 	private String language;
+	
+	
 	
 	
 	@Column(name="level")
