@@ -9,17 +9,16 @@ import kodlamaio.HRMS.entities.dtos.ResumeWithAllRelatedEntitiesDto;
 
 public interface ResumeService extends EntitiyService<Resume> {
 	
-	DataResult<Resume> getByCandidateId(int candidateId);
-	
+
 	Result addCoverLetterToResume(int resumeId, int coverLetterId);
 	
-	Result deleteCoverLetterFromResume (int resumeId);
-	
-	DataResult<ResumeWithAllRelatedEntitiesDto> getResumeDetailsByCandidateId(int candidateId);
-	
+	Result deleteCoverLetterFromResume(int resumeId);
 
 	DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumesDetailsByActivatedCandidate();
-	
+
+	DataResult<Resume> getByCandidateId(int candidateId);
+
+	DataResult<ResumeWithAllRelatedEntitiesDto> getResumeDetailsByCandidateId(int candidateId);
 
 
 }

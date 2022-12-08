@@ -21,52 +21,44 @@ import kodlamaio.HRMS.entities.concretes.Resume;
 import kodlamaio.HRMS.entities.dtos.ResumeWithAllRelatedEntitiesDto;
 
 @RestController
-@RequestMapping("/api/resume")
+@RequestMapping("/api/resumes")
 @CrossOrigin
 public class ResumesController {
-	
-	
+
 	private ResumeService resumeService;
-	
+
 	@Autowired
 	public ResumesController(ResumeService resumeService) {
-		super();
 		this.resumeService = resumeService;
 	}
-	
-	
+
 	@PostMapping("/add")
 	public Result add(@RequestBody Resume resume) {
 		return resumeService.add(resume);
 	}
-	
+
 	@PutMapping("/update")
 	public Result update(@RequestBody Resume resume) {
 		return resumeService.update(resume);
 	}
-	
+
 	@DeleteMapping("/delete")
-	public ResponseEntity<?> deleteById(int id){
-		return ResponseEntity.ok(this.resumeService.delete(id));
+	public Result delete(@RequestParam int id) {
+		return resumeService.delete(id);
 	}
-	
-	@GetMapping("/getbyid")
-	public DataResult<Resume> getById(@RequestParam int id){
-		return resumeService.getById(id);
-	}
-	
-	@GetMapping("/getall")
-	public DataResult<List<Resume>> getAll(){
+
+	@GetMapping("/getAll")
+	public DataResult<List<Resume>> getAll() {
 		return resumeService.getAll();
 	}
 
-	@GetMapping("/getbycandidateid")
-	public DataResult<Resume> getByCandidateId(int candidateId){
-		return resumeService.getByCandidateId(candidateId);
+	@GetMapping("/getById")
+	public DataResult<Resume> getById(@RequestParam int id) {
+		return resumeService.getById(id);
 	}
-	
+
 	@PostMapping("/addCoverLetterToResume")
-	public Result addacaoverLetterFromResume(@RequestParam int resumeId, @RequestParam int coverLetterId) {
+	public Result addCoverLetterToResume(@RequestParam int resumeId, @RequestParam int coverLetterId) {
 		return resumeService.addCoverLetterToResume(resumeId, coverLetterId);
 	}
 	
@@ -74,20 +66,19 @@ public class ResumesController {
 	public Result deleteCoverLetterFromResume(@RequestParam int resumeId) {
 		return resumeService.deleteCoverLetterFromResume(resumeId);
 	}
-	
-	
+
 	@GetMapping("/getAllResumesDetailsByActivatedCandidate")
-	public DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumesDetailsByActivatedCandidate(){
+	public DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumesDetailsByActivatedCandidate() {
 		return resumeService.getAllResumesDetailsByActivatedCandidate();
 	}
-	
+
 	@GetMapping("/getResumeDetailsByCandidateId")
-	public DataResult<ResumeWithAllRelatedEntitiesDto>  getResumeDetailsByCandidateId(@RequestParam int candidateId){
-		return resumeService. getResumeDetailsByCandidateId(candidateId);
+	public DataResult<ResumeWithAllRelatedEntitiesDto> getResumeDetailsByCandidateId(@RequestParam int candidateId) {
+		return resumeService.getResumeDetailsByCandidateId(candidateId);
 	}
 	
-	
-	
-	
-
+	@GetMapping("/getByCandidateId")
+	public DataResult<Resume> getByCandidateId(@RequestParam int candidateId) {
+		return resumeService.getByCandidateId(candidateId);
+	}
 }

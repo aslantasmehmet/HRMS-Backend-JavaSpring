@@ -139,16 +139,17 @@ public class ResumeManager implements ResumeService {
 
 	@Override
 	public DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumesDetailsByActivatedCandidate() {
+		
 		List<ResumeWithAllRelatedEntitiesDto> resumes = new ArrayList<ResumeWithAllRelatedEntitiesDto>();
 		
-		for (Resume resume : getAll().getData()){
-			if(resume.getCandidate().getUserActivation().isActivated()==true) {
+		for (Resume resume : getAll().getData()) {
+			if (resume.getCandidate().getUserActivation().isActivated() == true ) {
 				resumes.add(getResumeDetailsByCandidateId(resume.getCandidate().getId()).getData());
-			}
+			}			
 		};
+		
 		return new SuccessDataResult<List<ResumeWithAllRelatedEntitiesDto>>(resumes);
 	}
-
 	
 
 }

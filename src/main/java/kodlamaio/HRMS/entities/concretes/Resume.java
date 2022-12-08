@@ -33,22 +33,12 @@ public class Resume {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	
-	@Column(name="image_url")
-	private String imageUrl;
-	
-	@Column(name="resume_name")
-	private String resumeName;
+
 	
 	@Column(name="creation_date")
 	private LocalDateTime creationDate;
 	
-	@Column(name="last_updated_date")
-	private LocalDateTime lastUpdatedDate;
-	
-	@Column(name="visibilty")
-	private String visibilty;
-	
+
 	@OneToOne
 	@JoinColumn(name="candidate_id")
 	private Candidate candidate;
