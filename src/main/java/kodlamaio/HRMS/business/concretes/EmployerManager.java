@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import kodlamaio.HRMS.business.abstracts.CompanyStaffService;
 import kodlamaio.HRMS.business.abstracts.EmployerService;
+import kodlamaio.HRMS.business.abstracts.UpdatedEmployerService;
 import kodlamaio.HRMS.business.abstracts.UserActivationService;
 import kodlamaio.HRMS.business.abstracts.UserConfirmationService;
 import kodlamaio.HRMS.business.abstracts.UserConfirmationTypeService;
@@ -19,9 +21,11 @@ import kodlamaio.HRMS.core.utilities.result.Result;
 import kodlamaio.HRMS.core.utilities.result.SuccessDataResult;
 import kodlamaio.HRMS.core.utilities.result.SuccessResult;
 import kodlamaio.HRMS.dataAccess.abstracts.EmployerDao;
+import kodlamaio.HRMS.entities.concretes.CompanyStaff;
 import kodlamaio.HRMS.entities.concretes.Employer;
+import kodlamaio.HRMS.entities.concretes.UpdatedEmployer;
 import kodlamaio.HRMS.entities.concretes.UserActivation;
-
+import kodlamaio.HRMS.entities.concretes.UserConfirmationType;
 
 
 @Service
@@ -33,7 +37,7 @@ public class EmployerManager implements EmployerService {
 	private UserConfirmationService userConfirmationService;
 	private UserConfirmationTypeService userConfirmationTypeService;
 	private CompanyStaffService companyStaffService;
-	private UpdatedEmployerService updatedEmployerService;
+	private UpdatedEmployerService   updatedEmployerService;
 
 	@Autowired
 	public EmployerManager(EmployerDao employerDao, UserService userService, UserActivationService userActivationService,
@@ -259,4 +263,3 @@ public class EmployerManager implements EmployerService {
 	}
 
 }
-
