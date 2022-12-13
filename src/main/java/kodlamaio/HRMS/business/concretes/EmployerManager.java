@@ -25,6 +25,7 @@ import kodlamaio.HRMS.entities.concretes.CompanyStaff;
 import kodlamaio.HRMS.entities.concretes.Employer;
 import kodlamaio.HRMS.entities.concretes.UpdatedEmployer;
 import kodlamaio.HRMS.entities.concretes.UserActivation;
+import kodlamaio.HRMS.entities.concretes.UserConfirmation;
 import kodlamaio.HRMS.entities.concretes.UserConfirmationType;
 
 
@@ -150,12 +151,12 @@ public class EmployerManager implements EmployerService {
 		}
 
 		if (isConfirmed && userConfirmationTypeId == 1) {
-			userConfirmationService.add(new UserConfirmation(employer, companyStaff, userConfirmationType, isConfirmed));
+			userConfirmationService.add(new UserConfirmation(employer, userConfirmationType, isConfirmed));
 			return new SuccessResult("İşveren hesabı onaylandı.");
 		}
 
 		if (!isConfirmed && userConfirmationTypeId == 2) {
-			userConfirmationService.add(new UserConfirmation(employer, companyStaff, userConfirmationType, isConfirmed));
+			userConfirmationService.add(new UserConfirmation(employer, userConfirmationType, isConfirmed));
 			updatedEmployerService.delete(updatedEmployer.getId());
 			return new ErrorResult("İşveren güncellemesi onaylanmadı.");
 		}
@@ -168,7 +169,7 @@ public class EmployerManager implements EmployerService {
 
 		employerDao.save(employer);
 		updatedEmployerService.delete(updatedEmployer.getId());
-		userConfirmationService.add(new UserConfirmation(employer, companyStaff, userConfirmationType, isConfirmed));
+		userConfirmationService.add(new UserConfirmation(employer, userConfirmationType, isConfirmed));
 		return new SuccessResult("İşveren güncellemesi onaylandı.");
 	}
 	
